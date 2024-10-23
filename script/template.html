@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association de quartier</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#bureau">Le bureau</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Association de quartier factice "Vivre aux lilas"</h1>
+        <p>Description association</p>
+        <img src="bureau-image.webp" alt="bureau">
+    </header>
+
+    <section id="events">
+        {% for event in events %}
+        <article>
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.date }}</p>
+            <img src="{{ event.image }}" alt="{{ event.title }}">
+            <div>{{ event.content | safe }}</div>
+            <a href="#">Aller voir</a>
+        </article>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <ul>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#bureau">Le bureau</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
