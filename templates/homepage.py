@@ -10,7 +10,7 @@ output_file = "./view/index.html"
 
 # Initialize the Jinja2 environment
 env = Environment(loader=FileSystemLoader(template_dir))
-template = env.get_template("template.html")
+template = env.get_template("homepage.html")
 
 # Helper function to read markdown files
 def read_markdown(file_path):
