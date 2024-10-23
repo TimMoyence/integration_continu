@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Association de quartier</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/view/index.html">
+        <h1>Association de quartier factice "Vivre aux lilas"</h1>
+      </a>
+      <ul>
+        <li><a href="/view/bureau.html">Le bureau</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <section id="bureau">
+    {% for member in members %}
+    <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8">
+      <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+
+      <div class="sm:flex sm:justify-between sm:gap-4">
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 sm:text-xl">{{ member.fonction }}</h3>
+
+          <p class="mt-1 text-xs font-medium text-gray-600">{{ member.prenom }} {{ member.nom }}</p>
+        </div>
+
+        <div class="hidden sm:block sm:shrink-0">
+          <img alt=""
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+            class="size-16 rounded-lg object-cover shadow-sm" />
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p class="text-pretty text-sm text-gray-500">{{ member.email }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+
+  <footer>
+    <ul>
+      <li><a href="#">Politique de confidentialité</a></li>
+      <li><a href="#bureau">Le bureau</a></li>
+    </ul>
+  </footer>
+</body>
+
+</html>

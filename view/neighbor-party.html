@@ -1,186 +1,21 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Association de quartier</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-    <header>
-        <nav>
-            <h1>Association de quartier factice "Vivre aux lilas"</h1>
-            <ul>
-                <li><a href="#bureau">Le bureau</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-    <!--
-      Heads up! 👋
-    
-      This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
-    -->
-
-    <section
-        class="relative bg-[url(../atelier1/homepage.png)] bg-cover bg-center bg-no-repeat bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l ">
-        <div
-            class="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l blur-sm">
-        </div>
-
-        <div class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
-            <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-                <h1 class="text-3xl font-extrabold sm:text-5xl">
-                    Bienvenue sur le site de l'association
-
-
-                    <strong class="block font-extrabold text-rose-700"> "Vivre aux Lilas" </strong>
-                </h1>
-
-                <p class="mt-4 max-w-lg sm:text-xl/relaxed">
-                    Nous sommes ravis de vous présenter le site officiel de l'association de quartier "Vivre aux Lilas".
-                    Notre objectif est
-                    de renforcer les liens au sein de la communauté, de vous tenir informés des événements à venir et de
-                    vous fournir un
-                    accès facile aux informations importantes concernant l'association.
-                </p>
-
-
-            </div>
-        </div>
-    </section>
-
-
-    <section id="events" class="mb-2">
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-3.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-03-23</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers sportifs et amis du quartier des Lilas,</p>
-                    <p>L'association "Vivre aux Lilas" est fière d'organiser sa 5ème édition de la Course solidaire des
-                        Lilas, qui se tiendra le dimanche 23 mars 2025. Cet événement sportif et caritatif vise à
-                        collecter des fonds pour l'association "Les Petits Cœurs", qui œuvre pour améliorer les
-                        conditions de vie des enfants hospitalisés.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-5.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-05-17</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers voisins et amis de l'environnement,</p>
-                    <p>L'association "Vivre aux Lilas" vous invite chaleureusement à participer à notre Journée
-                        Éco-citoyenne annuelle, qui se tiendra le samedi 17 mai 2025 de 9h à 18h dans tout le quartier
-                        des Lilas.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-6.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-06-21</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers mélomanes et habitants des Lilas,</p>
-                    <p>L'association "Vivre aux Lilas" est ravie de vous convier à notre grande Fête de la Musique, qui
-                        se tiendra le samedi 21 juin 2025 de 16h à minuit dans tout le quartier des Lilas.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-4.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-04-11</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers amoureux des mots et de la lecture,</p>
-                    <p>L'association "Vivre aux Lilas" a le plaisir de vous convier à la 3ème édition du Festival du
-                        Livre des Lilas, qui se tiendra du vendredi 11 au dimanche 13 avril 2025. Cet événement culturel
-                        mettra à l'honneur la littérature sous toutes ses formes, avec un focus particulier sur les
-                        auteurs locaux et émergents.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-1.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-01-18</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers voisins et amis du quartier des Lilas,</p>
-                    <p>L'association de quartier "Vivre aux Lilas" est ravie de vous convier à notre traditionnelle Fête
-                        des voisins, qui se tiendra le samedi 18 janvier 2025 de 14h à 22h sur la place centrale de
-                        notre charmant quartier.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-        <a href="">
-            <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg m-2">
-                <img src="../atelier1/evenement-2.webp" alt="Evenement"
-                    class="h-56 w-full object-cover max-w-md min-w-96   " />
-                <div class="bg-white p-4 sm:p-6">
-                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 2025-02-16</time>
-                    <a href="#">
-                        <h3 class="mt-0.5 text-lg text-gray-900">Evenement</h3>
-                    </a>
-                    <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                    <p>Chers amis des Lilas et passionnés de verdure,</p>
-                    <p>L'association "Vivre aux Lilas" est heureuse de vous convier à son premier atelier de jardinage
-                        urbain de l'année 2025. Cet événement aura lieu le dimanche 16 février de 10h à 16h au jardin
-                        communautaire des Lilas.</p>
-                    </p>
-                </div>
-            </article>
-        </a>
-
-    </section>
-
-    <footer>
-        <ul>
-            <li><a href="#">Politique de confidentialité</a></li>
-            <li><a href="#bureau">Le bureau</a></li>
-        </ul>
-    </footer>
-</body>
-
-</html>
+<h1>Fête des voisins - Samedi 18 janvier 2025</h1>
+<p>Chers voisins et amis du quartier des Lilas,</p>
+<p>L'association de quartier "Vivre aux Lilas" est ravie de vous convier à notre traditionnelle Fête des voisins, qui se tiendra le samedi 18 janvier 2025 de 14h à 22h sur la place centrale de notre charmant quartier.</p>
+<h2>Au programme :</h2>
+<ul>
+<li>14h : Ouverture des festivités avec un discours de bienvenue</li>
+<li>14h30 - 18h : Animations pour petits et grands</li>
+<li>Jeux de société géants</li>
+<li>Ateliers de création artistique</li>
+<li>Maquillage pour enfants</li>
+<li>Démonstrations de danse par l'école de danse du quartier</li>
+<li>18h - 20h : Grand buffet participatif</li>
+<li>20h - 22h : Soirée dansante avec notre DJ local</li>
+</ul>
+<h2>Participer au buffet</h2>
+<p>Nous vous invitons à contribuer au buffet en apportant un plat salé ou sucré à partager. N'oubliez pas d'indiquer les ingrédients pour prévenir les allergies !</p>
+<h2>Inscriptions et informations</h2>
+<p>Pour faciliter l'organisation, merci de vous inscrire avant le 10 janvier auprès de Mme Dubois au 01 23 45 67 89 ou par email à fetedesvoisins@vivreauxlilas.fr.</p>
+<p>En cas de mauvais temps, l'événement sera déplacé à la salle des fêtes municipale.</p>
+<p>Venez nombreux pour ce moment de convivialité et de partage qui renforcera les liens de notre communauté !</p>
+<p>L'équipe de "Vivre aux Lilas"</p>
