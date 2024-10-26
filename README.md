@@ -9,6 +9,13 @@ This project generates the website for the fictional "Vivre aux Lilas" neighborh
 Name : Cristelle Almodar  
 Name : Tim Moyence
 
+## Stack
+
+- Python
+- HTML
+- CSS
+- Tailwind
+
 ## Project Structure
 
 ```plaintext
