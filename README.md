@@ -54,14 +54,14 @@ pip install jinja2 markdown
 
 ## How to Run the Project
 
-1. **Master Script**: The `launch_all.py` script runs all generation scripts in sequence.
+1. **Master Script**: The `script/launch_all.py` script runs all generation scripts in sequence.
 
 ### Steps to Run:
 
-1. Run the `launch_all.py` script to generate all the necessary pages:
+1. Run the `script/launch_all.py` script to generate all the necessary pages:
 
     ```bash
-    python3 launch_all.py
+    python3 script/launch_all.py
     ```
 
 2. The output HTML files will be saved in the `view/` directory
