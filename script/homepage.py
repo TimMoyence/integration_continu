@@ -22,28 +22,28 @@ routerDirectory = [
 env = Environment(loader=FileSystemLoader(template_dir))
 template = env.get_template("homepage.html")
 
-# Helper function to read markdown files and extract summary content
+# Helper function to read markdown files, extract the first title, and generate a summary
 def read_markdown_summary(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
-        content = file.readlines()
+        lines = file.readlines()
     
-    # Variables to store extracted summary content
-    collected_content = []
+    content = []
+    event_title = "Titre de l'événement"  # Valeur par défaut si aucun titre n'est trouvé
     in_summary_section = False
 
-    # Collect lines until the second title (##) as a summary
-    for line in content:
-        if line.startswith("##"):  # Stop at the second title
+    for line in lines:
+        # Check if the line starts with '# ' to get the first title as the event title
+        if line.startswith("# "):
+            event_title = line[2:].strip()  # Remove '# ' and get the rest as title
+            in_summary_section = True  # Start collecting summary after the first title
+        elif line.startswith("##"):  # Stop collecting at the second title
             break
-        if line.startswith("# "):  # Start collecting after the first title
-            in_summary_section = True
-            continue
-        if in_summary_section:
-            collected_content.append(line.strip())  # Collect summary lines
+        elif in_summary_section:
+            content.append(line.strip())  # Collect summary lines
 
-    # Join the collected lines and convert them to HTML
-    summary = "\n".join(collected_content).strip()
-    return markdown.markdown(summary)
+    # Convert the collected summary to HTML
+    summary = markdown.markdown("\n".join(content), extensions=['extra', 'smarty', 'toc'])
+    return event_title, summary
 
 # Parse and sort markdown files, then build the data structure for rendering
 events = []
@@ -52,24 +52,23 @@ events = []
 markdown_files = sorted([f for f in os.listdir(content_dir) if f.endswith(".md")])
 
 for i, file_name in enumerate(markdown_files):
-    # Extract event details from file names and markdown content
-    event_date = file_name.split("-")[0:3]  # Extract date
-    event_title = file_name.split("-")[3].replace("_", " ").title()
+    # Extract event date from file name
+    event_date = "-".join(file_name.split("-")[0:3])
     image_file = f"evenement-{file_name.split('-')[-1].split('.')[0]}.webp"
     
     # Use index `i` to map to the corresponding route in `routerDirectory`
     event_href = routerDirectory[i] if i < len(routerDirectory) else "#"
     
-    # Extract a summary of the content for the homepage
-    event_summary = read_markdown_summary(os.path.join(content_dir, file_name))
+    # Extract the title and a summary of the content for the homepage
+    event_title, event_summary = read_markdown_summary(os.path.join(content_dir, file_name))
 
     # Build the event data dictionary
     event_data = {
-        "title": event_title,
-        "date": "-".join(event_date),
-        "content": event_summary,  # Use summary content
+        "title": event_title,            # Use extracted title from the markdown file
+        "date": event_date,
+        "content": event_summary,        # Use summary content
         "image": os.path.join(image_dir, image_file),
-        "href": event_href  # Link to the generated event page
+        "href": event_href               # Link to the generated event page
     }
     events.append(event_data)
 
