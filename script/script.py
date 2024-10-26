@@ -26,12 +26,12 @@ def process_event(input_md, output_html):
 # Convert files
 if __name__ == "__main__":
     events = [
-        ("./atelier1/2025-01-18-evenement-1.md", "./view/neighbor-party.html"),
-        ("./atelier1/2025-02-16-evenement-2.md", "./view/gardening-workshop.html"),
-        ("./atelier1/2025-03-23-evenement-3.md", "./view/lilas-run.html"),
-        ("./atelier1/2025-04-11-evenement-4.md", "./view/book-festival.html"),
-        ("./atelier1/2025-05-17-evenement-5.md", "./view/eco-day.html"),
-        ("./atelier1/2025-06-21-evenement-6.md", "./view/party-lilas-music.html")
+        ("./atelier1/2025-01-18-evenement-1.md", "./view/2025-01-18-evenement-1.html"),
+        ("./atelier1/2025-02-16-evenement-2.md", "./view/2025-02-16-evenement-2.html"),
+        ("./atelier1/2025-03-23-evenement-3.md", "./view/2025-03-23-evenement-3.html"),
+        ("./atelier1/2025-04-11-evenement-4.md", "./view/2025-04-11-evenement-4.html"),
+        ("./atelier1/2025-05-17-evenement-5.md", "./view/2025-05-17-evenement-5.html"),
+        ("./atelier1/2025-06-21-evenement-6.md", "./view/2025-06-21-evenement-6.html")
     ]
 
     for input_md, output_html in events:

@@ -4,7 +4,7 @@ import os
 # Paths to your individual scripts
 homepage_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'homepage.py')
 bureau_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bureau.py')
-event_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'script.py')
+event_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'event.py')
 
 # Function to run a script
 def run_script(script_path):
