@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Association de quartier</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../view/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="/view/index.html">
-                <h1>Association de quartier factice "Vivre aux lilas"</h1>
-            </a>
-            <ul>
-                <li><a href="/view/bureau.html">Le bureau</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <header class="bg-green-200 text-black py-1">
+        <nav class="container mx-auto flex items-center justify-between px-4">
+          <a href="/view/index.html">
+            <div class="flex items-center space-x-4">
+                <img src="../atelier1/logo.png" alt="Logo de l'association" class="w-20 h-20">
+                <h1 class="text-l font-semibold">Association de quartier "Vivre aux Lilas"</h1>
+            </div>
+          </a>
+            <ul class="flex space-x-6">
+                <li><a href="/view/bureau.html" class="hover:underline">Le bureau</a></li>
+                <li><a href="#contact" class="hover:underline">Contact</a></li>
             </ul>
         </nav>
-
     </header>
 
     <section
@@ -74,7 +76,7 @@
     <footer>
         <ul>
             <li><a href="#">Politique de confidentialité</a></li>
-            <li><a href="/bureau.html">Le bureau</a></li>
+            <li><a href="../view/bureau.html">Le bureau</a></li>
         </ul>
     </footer>
 </body>
