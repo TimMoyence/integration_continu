@@ -1,10 +1,12 @@
+[![Image](https://i.goopics.net/9jkov2.png)](https://goopics.net/i/9jkov2) 
+
 # Vivre aux Lilas Association Website Generator
 
 This project generates the website for the fictional "Vivre aux Lilas" neighborhood association. It includes a homepage with upcoming events and a bureau page listing the association members. The scripts use Python, Jinja2 for templating, and CSV files for storing member information.
 
 ## Contributor name 
 
-Name : Cristelle Almodar
+Name : Cristelle Almodar  
 Name : Tim Moyence
 
 ## Project Structure
