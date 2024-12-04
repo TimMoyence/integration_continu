@@ -4,7 +4,7 @@ from jinja2 import Environment, FileSystemLoader
 
 # 
 content_dir = "./atelier1"
-image_dir = "../wwwroot"
+image_dir = "../atelier1"
 template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../templates")
 output_file = "./view/index.html"
 
