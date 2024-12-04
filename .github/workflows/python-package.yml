@@ -27,9 +27,19 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install -r requirements.txt
 
-    - name: Execute Python script to generate pages
+    - name: Generate and organize site pages
       run: |
-        python script/launch_all.py
+        python script/launch_all.py  
+        mkdir -p wwwroot             
+        mv ./view/* ./wwwroot/       
+        find . -maxdepth 1 -type f \( -name "*.png" -o -name "*.webp" \) -exec mv {} ./wwwroot/ \;  
+
+        if [ "$(ls -A ./wwwroot)" ]; then
+          echo "wwwroot is populated.";
+        else
+          echo "Error: wwwroot is empty after generation."; 
+          exit 1;
+        fi
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

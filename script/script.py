@@ -1,7 +1,6 @@
 import markdown
 import os
 
-# Helper function to convert Markdown to HTML
 def convert_md_to_html(input_file, output_file):
     if not input_file.endswith(".md"):
         print(f"{input_file} n'est pas un fichier Markdown.")
@@ -22,8 +21,7 @@ def convert_md_to_html(input_file, output_file):
 
 def process_event(input_md, output_html):
     convert_md_to_html(input_md, output_html)
-
-# Convert files
+    
 if __name__ == "__main__":
     events = [
         ("./atelier1/2025-01-18-evenement-1.md", "./view/2025-01-18-evenement-1.html"),
