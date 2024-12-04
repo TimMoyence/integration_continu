@@ -2,7 +2,7 @@ import csv
 import os
 from jinja2 import Environment, FileSystemLoader
 
-csv_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../wwwroot/membres-bureau-association.csv")
+csv_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../atelier1/membres-bureau-association.csv")
 template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../templates")
 output_file = "./view/bureau.html"
 
