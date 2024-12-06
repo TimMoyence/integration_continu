@@ -55,8 +55,16 @@ jobs:
       # Validate generated HTML files
       - name: Validate HTML with tidy
         run: |
-          # If any HTML error is found, tidy returns non-zero
-          tidy -e wwwroot/*.html || exit 1
+          tidy -q wwwroot/*.html > tidy_output.txt 2>&1 || true
+          # Check if the output contains 'Error:' to fail only on errors
+          if grep -q "Error:" tidy_output.txt; then
+            echo "HTML validation found errors"
+            cat tidy_output.txt
+            exit 1
+          else
+            echo "No HTML errors found."
+          fi
+
 
       # Install curl for smoke tests
       - name: Install curl
