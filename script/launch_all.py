@@ -1,9 +1,12 @@
 import subprocess
-import os
+import os 
 
-homepage_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'homepage.py')
-bureau_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bureau.py')
-event_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'event.py')
+path = os.path.dirname(os.path.abspath(__file__))
+join = os.path.join
+
+homepage_script = join(path, 'homepage.py')
+bureau_script = join(path, 'bureau.py')
+event_script = join(path, 'event.py')
 
 
 def run_script(script_path):
