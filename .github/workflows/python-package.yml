@@ -84,7 +84,7 @@ jobs:
         run: ls        
 
       - name: Run tests
-        run: pytest ./test/ --maxfail=1 --disable-warnings -v
+        run: pytest ./Test/ --maxfail=1 --disable-warnings -v
 
 
       - name: Deploy to GitHub Pages
