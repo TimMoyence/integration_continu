@@ -1,4 +1,4 @@
-name: Generate and Publish Pages
+name: Generate, Test and Publish Pages
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,37 +15,77 @@ jobs:
         python-version: ["3.13"]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
-    - name: Generate and organize site pages
-      run: |
-        python script/launch_all.py  
-        mkdir -p wwwroot             
-        mv ./view/* ./wwwroot/       
-        find . -type f \( -name "*.png" -o -name "*.webp" \) -exec rsync -R {} ./wwwroot/ \;  
+      - name: Generate and organize site pages
+        run: |
+          python script/launch_all.py
+          mkdir -p wwwroot
+          mv ./view/* ./wwwroot/
+          find . -type f \( -name "*.png" -o -name "*.webp" \) -exec rsync -R {} ./wwwroot/ \;
+          
+          if [ "$(ls -A ./wwwroot)" ]; then
+            echo "wwwroot is populated."
+          else
+            echo "Error: wwwroot is empty after generation."
+            exit 1
+          fi
 
-        if [ "$(ls -A ./wwwroot)" ]; then
-          echo "wwwroot is populated.";
-        else
-          echo "Error: wwwroot is empty after generation."; 
-          exit 1;
-        fi
+      - name: Debug deployment contents
+        run: ls -l wwwroot
 
-    - name: Debug deployment contents
-      run: ls -l wwwroot
+      ### Test Stage ###
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: wwwroot  
+      # Install tidy for HTML validation
+      - name: Install tidy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tidy
+
+      # Validate generated HTML files
+      - name: Validate HTML with tidy
+        run: |
+          # If any HTML error is found, tidy returns non-zero
+          tidy -e wwwroot/*.html || exit 1
+
+      # Install curl for smoke tests
+      - name: Install curl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+
+      # Optional: Start a simple HTTP server to simulate the deployed environment
+      - name: Start local server for smoke tests
+        run: |
+          python -m http.server --directory wwwroot 8080 &
+          sleep 2  # Wait a bit for the server to start
+
+      # Smoke test using curl against the locally served pages
+      - name: Smoke Test - Check homepage accessibility
+        run: |
+          # Check if homepage returns a 200 status code
+          curl -I http://127.0.0.1:8080/index.html | grep "200 OK" || exit 1
+
+      # Run additional tests (5+ tests)
+      # Assume you have a 'tests/' directory with unit/integration/functional tests
+      - name: Run Python tests
+        run: |
+          python -m pip install pytest
+          pytest tests/ --maxfail=1 --disable-warnings -v
+
+      ### Deployment Stage (Only if all tests above passed) ###
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: wwwroot
