@@ -44,19 +44,16 @@ jobs:
       - name: Debug deployment contents
         run: ls -l wwwroot
 
-      ### Test Stage ###
-
-      # Install tidy for HTML validation
+          
       - name: Install tidy
         run: |
           sudo apt-get update
           sudo apt-get install -y tidy
-
-      # Validate generated HTML files
+    
       - name: Validate HTML with tidy
         run: |
           tidy -q wwwroot/*.html > tidy_output.txt 2>&1 || true
-          # Check if the output contains 'Error:' to fail only on errors
+          
           if grep -q "Error:" tidy_output.txt; then
             echo "HTML validation found errors"
             cat tidy_output.txt
@@ -64,34 +61,28 @@ jobs:
           else
             echo "No HTML errors found."
           fi
-
-
-      # Install curl for smoke tests
+      
       - name: Install curl
         run: |
           sudo apt-get update
           sudo apt-get install -y curl
-
-      # Optional: Start a simple HTTP server to simulate the deployed environment
+      
       - name: Start local server for smoke tests
         run: |
           python -m http.server --directory wwwroot 8080 &
-          sleep 2  # Wait a bit for the server to start
-
-      # Smoke test using curl against the locally served pages
+          sleep 2  
+      
       - name: Smoke Test - Check homepage accessibility
-        run: |
-          # Check if homepage returns a 200 status code
+        run: |       
           curl -I http://127.0.0.1:8080/index.html | grep "200 OK" || exit 1
+      
+      
+      - name: Run pytest install
+        run: python -m pip install pytest
 
-      # Run additional tests (5+ tests)
-      # Assume you have a 'tests/' directory with unit/integration/functional tests
-      - name: Run Python tests
-        run: |
-          python -m pip install pytest
-          pytest tests/ --maxfail=1 --disable-warnings -v
+      - name: Run tests
+        run: pytest tests --maxfail=1 --disable-warnings -v
 
-      ### Deployment Stage (Only if all tests above passed) ###
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
