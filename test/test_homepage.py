@@ -1,17 +1,17 @@
 import os
 
 def test_index_html_exists():
-    assert os.path.exists("view/index.html"), "The index.html file was not generated."
+    assert os.path.exists("wwwroot/index.html"), "The index.html file was not generated."
 
 
 def test_index_html_content():
-    with open("view/index.html", "r", encoding="utf-8") as f:
+    with open("wwwroot/index.html", "r", encoding="utf-8") as f:
         content = f.read()
     assert "<title>Association de quartier</title>" in content, "The homepage title is missing."
     assert "Bienvenue sur le site de l'association" in content, "Expected welcome text not found."
 
 def test_event_images_exist():
-    with open("view/index.html", "r", encoding="utf-8") as f:
+    with open("wwwroot/index.html", "r", encoding="utf-8") as f:
         content = f.read()
 
     # Check if the logo is referenced and if it exists
