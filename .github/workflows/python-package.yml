@@ -81,7 +81,7 @@ jobs:
         run: python -m pip install pytest
 
       - name : run ls
-        run: ls        
+        run: ls -l       
 
       - name: Run tests
         run: pytest ./Test/ --maxfail=1 --disable-warnings -v

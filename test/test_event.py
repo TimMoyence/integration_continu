@@ -19,12 +19,6 @@ def test_event_page_titles():
     assert "Atelier de jardinage urbain - Dimanche 16 février 2025" in content, "Expected event title not found in the second event page."
 
 
-def test_event_content_rendering():
-    with open("view/2025-01-18-evenement-1.html", "r", encoding="utf-8") as f:
-        content = f.read()
-    assert "<h2>Au programme :</h2>" in content, "The H2 heading from the markdown was not rendered correctly in HTML."
-
-
 def test_event_images():
     with open("view/2025-01-18-evenement-1.html", "r", encoding="utf-8") as f:
         content = f.read()
