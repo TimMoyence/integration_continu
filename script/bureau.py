@@ -2,8 +2,11 @@ import csv
 import os
 from jinja2 import Environment, FileSystemLoader
 
-csv_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../atelier1/membres-bureau-association.csv")
-template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../templates")
+path = os.path.dirname(os.path.abspath(__file__))
+join = os.path.join
+
+csv_file_path = join(path, "../atelier1/membres-bureau-association.csv")
+template_dir = join(path, "../templates")
 output_file = "./view/bureau.html"
 
 env = Environment(loader=FileSystemLoader(template_dir))
